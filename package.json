@@ -1,0 +1,20 @@
+{
+  "name": "node-js-asm",
+  "private": true,
+  "version": "0.0.0",
+  "main" : "./src/main.js",
+  "type": "module",
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "nodemon": "nodemon src/*"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "vite": "^2.8.0"
+  }
+}
