@@ -2,8 +2,8 @@
   "name": "node-js-asm",
   "private": true,
   "version": "0.0.0",
-  "main": "./src/main.js",
-  "type": "module",
+  "main": "./src/app.js",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,5 +18,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1",
     "vite": "^2.8.0"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
