@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
+import productsRouter from './routes/products.router';
+import homeRouter from './routes/home.router';
 
 const app = express();
 const PORT = 5000;
-const homeRouter = require('./routes/home');
-const productsRouter = require('./routes/products.router');
 
 app.use('/', homeRouter);
 app.use('/products', productsRouter);
