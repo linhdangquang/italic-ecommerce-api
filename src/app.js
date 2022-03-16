@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import productsRouter from './routes/products.router';
 import homeRouter from './routes/home.router';
 import checkAuth from './middlewares/checkAuth.middleware';
@@ -16,6 +17,8 @@ app.use(express.json());
 
 app.use('/', homeRouter);
 app.use('/api/products', checkAuth, productsRouter);
+
+mongoose.connect('mongodb://localhost:27017/we16308');
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
