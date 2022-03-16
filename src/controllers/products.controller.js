@@ -29,6 +29,32 @@ export const postProduct = async (req, res) => {
   }
 };
 
-export const delProduct = (req, res) => null;
+export const delProduct = (req, res) => {
+  const { productId } = req.params;
+  Product.findByIdAndDelete(productId, (err, product) => {
+    if (err) {
+      res.status(400).json(err);
+    } else {
+      res.status(200).json(product);
+    }
+  });
+};
 
-export const updateProduct = (req, res) => null;
+export const updateProduct = (req, res) => {
+  const { productId } = req.params;
+  const { name, price } = req.body;
+  Product.findByIdAndUpdate(
+    productId,
+    {
+      name,
+      price,
+    },
+    (err, product) => {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(product);
+      }
+    },
+  );
+};
