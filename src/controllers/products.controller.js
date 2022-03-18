@@ -42,12 +42,21 @@ export const delProduct = (req, res) => {
 
 export const updateProduct = (req, res) => {
   const { productId } = req.params;
-  const { name, price } = req.body;
+  const {
+    name, price, description, image,
+  } = req.body;
   Product.findByIdAndUpdate(
     productId,
     {
       name,
       price,
+      description,
+      image,
+    },
+    {
+      timestamps: { createdAt: false, updatedAt: true },
+      new: true,
+      runValidators: true,
     },
     (err, product) => {
       if (err) {
@@ -56,5 +65,6 @@ export const updateProduct = (req, res) => {
         res.status(200).json(product);
       }
     },
+
   );
 };
