@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import productsRouter from './routes/products.router';
-import homeRouter from './routes/home.router';
+import cors from 'cors';
+import router from './routes';
 import checkAuth from './middlewares/checkAuth.middleware';
 
 const app = express();
@@ -13,10 +13,12 @@ app.use((req, res, next) => {
   const endMs = Date.now() - startMs;
   console.log(`${req.method} ${req.baseUrl}${req.url}  ${res.statusCode} ${endMs}ms`);
 });
-app.use(express.json());
 
-app.use('/', homeRouter);
-app.use('/api/products', checkAuth, productsRouter);
+app.use(express.json());
+app.use(cors());
+
+app.use(router.Home);
+app.use(checkAuth, router.Product);
 
 mongoose.connect('mongodb://localhost:27017/we16308');
 
