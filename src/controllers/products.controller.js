@@ -42,17 +42,9 @@ export const delProduct = (req, res) => {
 
 export const updateProduct = (req, res) => {
   const { productId } = req.params;
-  const {
-    name, price, description, image,
-  } = req.body;
   Product.findByIdAndUpdate(
     productId,
-    {
-      name,
-      price,
-      description,
-      image,
-    },
+    req.body,
     {
       timestamps: { createdAt: false, updatedAt: true },
       new: true,

@@ -19,6 +19,7 @@ app.use(cors());
 
 app.use(router.Home);
 app.use(checkAuth, router.Product);
+app.use(router.Category);
 
 mongoose.connect('mongodb://localhost:27017/we16308');
 

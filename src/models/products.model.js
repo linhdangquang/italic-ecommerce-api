@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, ObjectId } from 'mongoose';
 
 const productsSchema = new Schema({
   name: { type: String, required: true },
@@ -7,6 +7,7 @@ const productsSchema = new Schema({
   image: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
+  category: { type: ObjectId, ref: 'Category' },
 }, { timestamps: { createdAt: false, updatedAt: true } });
 
 export default mongoose.model('Product', productsSchema);
