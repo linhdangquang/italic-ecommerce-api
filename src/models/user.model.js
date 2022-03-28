@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import isEmail from 'validator/lib/isEmail';
-import {createHmac} from 'crypto';
 import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
@@ -34,7 +34,7 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.generateAuthToken = function () {
   // Generate an auth token for the user
   const user = this;
-  const token = jwt.sign({ _id: user._id}, 'linh-secret');
+  const token = jwt.sign({ _id: user._id}, process.env.JWT_SECRET_KEY);
   user.tokens = user.tokens.concat({ token });
   return user.save().then(() => {
     return token;
@@ -45,12 +45,10 @@ userSchema.methods.generateAuthToken = function () {
 userSchema.statics.findByCredentials = async (email, password) => {
   // Search for a user by email and password.
   const user = await User.findOne({ email });
-  console.log(user);
   if (!user) {
     console.log('User not found');
   }
   const isPasswordMatch = await bcrypt.compare(password, user.password);
-  console.log(isPasswordMatch);
   if (!isPasswordMatch) {
     console.log('Password does not match');
   }
