@@ -14,6 +14,6 @@ export const verifyToken = async (req, res, next) => {
     req.token = token;
     next();
   } catch (error) {
-    res.status(401).json({ error: 'Invalid token' });
+    res.status(401).json({ error: 'Not authorized to access' });
   }
 }

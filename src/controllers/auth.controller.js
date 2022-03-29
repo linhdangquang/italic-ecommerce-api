@@ -49,3 +49,19 @@ export const signIn = async (req, res) => {
     res.status(400).json(error);
   }
 };
+
+export const getUser = async (req, res) => {
+ res.json(req.user);
+}
+
+export const logOutUser = async (req, res) => {
+  try {
+    req.user.tokens = req.user.tokens.filter(token => {
+      return token.token !== req.token;
+    })
+    await req.user.save();
+    res.status(200).json({ message: 'Log out successfully' });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
