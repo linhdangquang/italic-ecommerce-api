@@ -3,9 +3,9 @@ import 'dotenv/config'
 import User from '../models/user.model'
 
 export const verifyToken = async (req, res, next) => {
-  const token = req.header('Authorization').replace('Bearer ', '');
-  const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
   try {
+    const token = req.header('Authorization').replace('Bearer ', '') ;
+    const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const user = await User.findOne({ _id: data._id, 'tokens.token': token }, { timestamps: { createdAt: false } });
     if (!user) {
       throw new Error();
