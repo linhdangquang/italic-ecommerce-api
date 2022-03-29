@@ -65,3 +65,13 @@ export const logOutUser = async (req, res) => {
     res.status(400).json(error);
   }
 }
+
+export const logOutAllTokens = async (req, res) => {
+  try {
+    req.user.tokens = [];
+    await req.user.save();
+    res.status(200).json({ message: 'Log out all tokens successfully' });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
