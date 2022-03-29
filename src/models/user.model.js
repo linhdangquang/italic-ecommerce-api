@@ -18,8 +18,10 @@ const userSchema = new mongoose.Schema({
     {
       token: { type: String, required: true },
     }
-  ]
-});
+  ],
+  role: { type: String, required: true, enum: ['user', 'admin'], default: 'user' },
+  createdAt: { type: Date, default: Date.now },
+}, {timestamps: { createdAt: false}} );
 
 
 
@@ -32,9 +34,10 @@ userSchema.pre('save', async function (next) {
 })
 
 userSchema.methods.generateAuthToken = function () {
-  // Generate an auth token for the user
   const user = this;
-  const token = jwt.sign({ _id: user._id}, process.env.JWT_SECRET_KEY);
+  const token = jwt.sign({ _id: user._id}, process.env.JWT_SECRET_KEY, {
+    expiresIn: '6h'
+  });
   user.tokens = user.tokens.concat({ token });
   return user.save().then(() => {
     return token;
