@@ -10,16 +10,14 @@ export const signUp = async (req, res) => {
       });
     }
     const user = await User({ name, email, password }).save();
-    const token = await user.generateAuthToken();
     res.status(201).json({
       user: {
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: user.tokens,
+        role: user.role,
       },
-      token,
-    });
+  });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -28,10 +26,11 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findByCredentials(email, password);
-    if (!user) {
+    const user = await User.findByCredentials
+    (email, password);
+    if (user.message) {
       return res.status(400).send({
-        message: 'Login failed! Check authentication credentials',
+        message: user.message,
       });
     }
     const token = await user.generateAuthToken();
@@ -40,7 +39,8 @@ export const signIn = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: user.tokens,
+        role: user.role,
+        token: token,
       },
       token,
       message: 'Sign in successfully',
@@ -56,21 +56,9 @@ export const getUser = async (req, res) => {
 
 export const logOutUser = async (req, res) => {
   try {
-    req.user.tokens = req.user.tokens.filter(token => {
-      return token.token !== req.token;
-    })
+    req.user.token = '';
     await req.user.save();
     res.status(200).json({ message: 'Log out successfully' });
-  } catch (error) {
-    res.status(400).json(error);
-  }
-}
-
-export const logOutAllTokens = async (req, res) => {
-  try {
-    req.user.tokens = [];
-    await req.user.save();
-    res.status(200).json({ message: 'Log out all tokens successfully' });
   } catch (error) {
     res.status(400).json(error);
   }

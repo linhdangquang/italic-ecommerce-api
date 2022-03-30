@@ -4,10 +4,12 @@ const productsSchema = new Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true, min: [1, 'Min number is 1'] },
   description: { type: String, required: true },
-  image: { type: String, required: true },
+  image: { type: String, required: true, default: 'https://img.icons8.com/ios-filled/100/000000/no-image.png' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   category: { type: ObjectId, ref: 'Category' },
+  stock: { type: Number, required: true, min: [1, 'Min number is 1'] , default: 1},
+  status: { type: Number, enum: [0 , 1], default: 0 },
 }, { timestamps: { createdAt: false, updatedAt: true } });
 
 export default mongoose.model('Product', productsSchema);
