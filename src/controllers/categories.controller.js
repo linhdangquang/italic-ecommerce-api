@@ -15,7 +15,10 @@ export const getCategoryDetail = async (req, res) => {
     const { categoryId } = req.params;
     const category = await Category.findById(categoryId);
     const products = await Product.find({ category: categoryId }).populate('category');
-    res.json({ category, products });
+    res.json({ category: {
+      ...category.toObject(),
+      products,
+    } });
   } catch (error) {
     res.status(400).json(error);
   }

@@ -17,6 +17,7 @@ export const signUp = async (req, res) => {
         email: user.email,
         role: user.role,
       },
+      message: 'User created successfully',
   });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -52,14 +53,4 @@ export const signIn = async (req, res) => {
 
 export const getUser = async (req, res) => {
  res.json(req.user);
-}
-
-export const logOutUser = async (req, res) => {
-  try {
-    req.user.token = '';
-    await req.user.save();
-    res.status(200).json({ message: 'Log out successfully' });
-  } catch (error) {
-    res.status(400).json(error);
-  }
 }
