@@ -15,7 +15,8 @@ app.use(cors());
 app.use(router.Home);
 app.use(router.Product);
 app.use(router.Category);
-app.use(router.User);
+app.use(router.Auth);
+app.use(router.HeroBanner);
 
 mongoose.connect(process.env.MONGODB_URL)
 

@@ -1,7 +1,7 @@
 import User from '../models/user.model';
 
 export const signUp = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { email } = req.body;
   try {
     const existUser = await User.findOne({ email });
     if (existUser) {
@@ -9,7 +9,7 @@ export const signUp = async (req, res) => {
         message: 'Email already exists',
       });
     }
-    const user = await User({ name, email, password }).save();
+    const user = await User(req.body).save();
     res.status(201).json({
       user: {
         _id: user._id,
@@ -41,6 +41,8 @@ export const signIn = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        avatarName: user.avatarName,
+        avatarUrl: user.avatarUrl,
         token: token,
       },
       token,
@@ -51,6 +53,37 @@ export const signIn = async (req, res) => {
   }
 };
 
-export const getUser = async (req, res) => {
- res.json(req.user);
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find({}, '-password',);
+    if (existUser) {
+      return res.status(400).json({
+        message: 'Email already exists',
+      });
+    }
+    res.json(users);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 }
+
+export const changeInfo = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
+    res.json({
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        avatarName: user.avatarName,
+        avatarUrl: user.avatarUrl,
+        token: user.token,
+      }
+    });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+}
+
+

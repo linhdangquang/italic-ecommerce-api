@@ -21,7 +21,7 @@ export const verifyToken = async (req, res, next) => {
 
 export const isAuth = async (req, res, next) => {
   try {
-    console.log(req.user);
+    // console.log(req.user);
     if (req.user._id.toString() === req.params.userId) {
       next();
     } else {

@@ -1,17 +1,18 @@
 import Product from '../models/products.model';
 
 export const getProducts = (req, res) => {
-  console.log(req.query);
-  const limit = req.query.limit
-  const textSearch = req.query.q
+  const limit = req.query.limit;
+  const textSearch = req.query.q;
   Product.find({}, (err, products) => {
     if (err) {
       res.status(400).json(err);
     } else {
       res.status(200).json(products);
     }
-  }).where('name').regex(new RegExp(textSearch, 'i')).limit(limit);
-
+  })
+    .where('name')
+    .regex(new RegExp(textSearch, 'i'))
+    .limit(limit);
 };
 
 export const getProduct = async (req, res) => {
@@ -60,7 +61,6 @@ export const updateProduct = (req, res) => {
       } else {
         res.status(200).json(product);
       }
-    },
-
+    }
   );
 };

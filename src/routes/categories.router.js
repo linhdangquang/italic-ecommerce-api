@@ -1,6 +1,6 @@
 import express from 'express';
 import * as CategoryController from '../controllers/categories.controller';
-import { isAdmin, isAuth, verifyToken } from '../middleware/auth';
+  import { isAdmin, isAuth, verifyToken } from '../middleware/auth';
 
 const Router = express.Router();
 const URL = '/api/categories';
