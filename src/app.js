@@ -16,6 +16,7 @@ app.use(router.Home);
 app.use(router.Product);
 app.use(router.Category);
 app.use(router.Auth);
+app.use(router.Order);
 app.use(router.HeroBanner);
 
 mongoose.connect(process.env.MONGODB_URL)
