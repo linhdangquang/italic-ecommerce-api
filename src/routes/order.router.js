@@ -8,5 +8,8 @@ const BASE_URL = '/api/orders';
 Router.get(`${BASE_URL}/:userId`, verifyToken,isAuth, isAdmin, OrderController.getAllOrders);
 Router.post(`${BASE_URL}/:userId`, verifyToken, isAuth, OrderController.postOrder);
 Router.get(`${BASE_URL}/details/:userId/:orderId`, verifyToken, isAuth, OrderController.getOrderDetails);
+Router.get(`${BASE_URL}/user/:userId`, verifyToken, isAuth, OrderController.getOrderByUser);
+Router.put(`${BASE_URL}/:userId/:orderId`, verifyToken, isAuth, OrderController.updateOrder);
+Router.delete(`${BASE_URL}/:userId/:orderId`, verifyToken, isAuth, OrderController.deleteOrder);
 
 export default Router;

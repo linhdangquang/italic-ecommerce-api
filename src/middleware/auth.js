@@ -13,7 +13,6 @@ export const verifyToken = async (req, res, next) => {
 
     req.user = user;
     req.token = token;
-    console.log(user);
     next();
   } catch (error) {
     res.status(401).json( { message: 'Not authorized to access ' });
@@ -22,7 +21,6 @@ export const verifyToken = async (req, res, next) => {
 
 export const isAuth = async (req, res, next) => {
   try {
-    console.log(req.user);
     if (req.user._id.toString() === req.params.userId) {
       next();
     }else if (req.user.role === 'admin') {

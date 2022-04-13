@@ -56,13 +56,9 @@ export const signIn = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({}, '-password',);
-    if (existUser) {
-      return res.status(400).json({
-        message: 'Email already exists',
-      });
-    }
     res.json(users);
   } catch (error) {
+    console.log(error)
     res.status(400).json(error);
   }
 }
