@@ -3,7 +3,12 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 import cors from 'cors';
 import morgan from 'morgan';
-import router from './routes';
+import HomeRouter from './routes/home.router';
+import ProductRouter from './routes/products.router';
+import CategoryRouter from './routes/categories.router';
+import AuthRouter from './routes/auth.router';
+import HeroBannerRouter from './routes/herobanner.router';
+import OrderRouter from './routes/order.router';
 import path from 'path';
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,12 +18,12 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(cors());
 
-app.use(router.Home);
-app.use(router.Product);
-app.use(router.Category);
-app.use(router.Auth);
-app.use(router.Order);
-app.use(router.HeroBanner);
+app.use(HomeRouter);
+app.use(ProductRouter);
+app.use(CategoryRouter);
+app.use(AuthRouter);
+app.use(OrderRouter);
+app.use(HeroBannerRouter);
 
 mongoose.connect(process.env.MONGODB_URL)
 

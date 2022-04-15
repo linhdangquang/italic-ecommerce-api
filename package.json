@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "main": "src/app.js",
   "type": "commonjs",
+  "entry": ["regenerator-runtime/runtime.js", "./src/app.js"],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "babel src -d dist",
     "preview": "vite preview",
     "server": "nodemon src/app.js --exec babel-node -e js",
-    "start": "nodemon --exec babel-node ./src/app.js -e js"
+    "start": "node dist/app.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -33,6 +34,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.6",
     "morgan": "^1.10.0",
+    "regenerator-runtime": "^0.13.9",
     "validator": "^13.7.0"
   }
 }

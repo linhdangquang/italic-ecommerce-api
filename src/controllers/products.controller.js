@@ -1,4 +1,5 @@
 import Product from '../models/products.model';
+import 'regenerator-runtime/runtime';
 
 export const getProducts = (req, res) => {
   const limit = req.query.limit;
