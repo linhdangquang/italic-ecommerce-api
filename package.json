@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "server": "nodemon src/app.js --exec babel-node -e js",
     "start": "nodemon src/app.js --exec babel-node -e js"
   },
   "devDependencies": {

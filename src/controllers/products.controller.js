@@ -5,7 +5,7 @@ export const getProducts = (req, res) => {
   const textSearch = req.query.q;
   Product.find({}, (err, products) => {
     if (err) {
-      res.status(400).json(err);
+      return res.status(400).json(err);
     } else {
       res.status(200).json(products);
     }
