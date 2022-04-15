@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 import cors from 'cors';
 import morgan from 'morgan';
-import router from './routes/index';
+import router from './routes';
 import path from 'path';
 const app = express();
 const PORT = process.env.PORT || 5000;

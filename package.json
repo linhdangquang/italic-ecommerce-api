@@ -2,14 +2,14 @@
   "name": "node-js-asm",
   "private": true,
   "version": "0.0.0",
-  "main": "./src/app.js",
+  "main": "src/app.js",
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "server": "nodemon src/app.js --exec babel-node -e js",
-    "start": "node --exec babel-node ./src/app.js -e js"
+    "start": "nodemon --exec babel-node ./src/app.js -e js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
