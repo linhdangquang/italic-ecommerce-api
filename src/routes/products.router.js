@@ -1,6 +1,6 @@
 import express from 'express';
-import * as productsController from '../controllers/products.controller';
-import { isAdmin, isAuth, verifyToken } from '../middleware/auth';
+import * as productsController from '../controllers/products.controller.js';
+import { isAdmin, isAuth, verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
 const URL = '/api/products';

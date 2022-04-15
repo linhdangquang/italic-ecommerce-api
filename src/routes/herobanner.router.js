@@ -1,6 +1,6 @@
 import express from 'express';
-import * as HeroBannerController from '../controllers/herobanner.controller';
-import { isAdmin, isAuth, verifyToken } from '../middleware/auth';
+import * as HeroBannerController from '../controllers/herobanner.controller.js';
+import { isAdmin, isAuth, verifyToken } from '../middleware/auth.js';
 
 const Router = express.Router();
 const URL = '/api/herobanner';

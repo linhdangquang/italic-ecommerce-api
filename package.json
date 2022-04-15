@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "nodemon src/app.js --exec babel-node -e js",
-    "start": "nodemon src/app.js --exec babel-node -e js"
+    "start": "node --exec babel-node ./src/app.js -e js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,6 +1,6 @@
 import express from 'express';
-import * as OrderController from '../controllers/order.controller';
-import { isAdmin, isAuth, verifyToken } from '../middleware/auth';
+import * as OrderController from '../controllers/order.controller.js';
+import { isAdmin, isAuth, verifyToken } from '../middleware/auth.js';
 
 const Router = express.Router();
 const BASE_URL = '/api/orders';
