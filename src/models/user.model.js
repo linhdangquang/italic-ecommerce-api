@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true, minlength: 6, },
     avatarUrl: { type:String, required: true, default:"https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-image-icon-default-avatar-profile-icon-social-media-user-vector-image-209162840.jpg" },
     avatarName: { type: String, required: true, default: 'no-image.png' },
-    token: { type: String,  default: '' },
+    token: { type: String, default: '' },
     role: {
       type: String,
       required: true,

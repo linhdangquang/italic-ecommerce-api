@@ -9,6 +9,6 @@ Router.get(URL, HeroBannerController.getAllHeroBanner);
 Router.post(`${URL}/:userId`, verifyToken, isAuth, isAdmin ,HeroBannerController.createHeroBanner);
 Router.get(`${URL}/:id`, HeroBannerController.getOneHeroBanner);
 Router.put(`${URL}/:userId/:id`, verifyToken, isAuth, isAdmin, HeroBannerController.updateHeroBanner);
-Router.delete(`${URL}/:userId/:id`,verifyToken, isAuth, isAdmin,  HeroBannerController.deleteHeroBanner);
+Router.delete(`${URL}/:userId/:id`,verifyToken, isAuth, isAdmin, HeroBannerController.deleteHeroBanner);
 
 export default Router;

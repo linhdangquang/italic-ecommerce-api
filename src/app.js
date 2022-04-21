@@ -28,7 +28,7 @@ app.use(HeroBannerRouter);
 mongoose.connect(process.env.MONGODB_URL)
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..' ,  'public' ,  'index.html'));
+  res.sendFile(path.join(__dirname, '..' , 'public' , 'index.html'));
 });
 
 app.listen(PORT, () => {
