@@ -13,5 +13,4 @@ const productsSchema = new Schema({
   updatedAt: { type: Date, default: Date.now },
 }, { timestamps: { createdAt: false, updatedAt: true } });
 
-
 export default mongoose.model('Product', productsSchema);

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import isMobilePhone from 'validator/lib/isMobilePhone'
+import isMobilePhone from 'validator/lib/isMobilePhone';
+
 const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,

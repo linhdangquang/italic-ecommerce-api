@@ -27,8 +27,7 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findByCredentials
-    (email, password);
+    const user = await User.findByCredentials(email, password);
     if (user.message) {
       return res.status(400).send({
         message: user.message,
@@ -43,7 +42,7 @@ export const signIn = async (req, res) => {
         role: user.role,
         avatarName: user.avatarName,
         avatarUrl: user.avatarUrl,
-        token: token,
+        token,
       },
       token,
       message: 'Sign in successfully',
@@ -58,10 +57,10 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find({}, '-password',);
     res.json(users);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json(error);
   }
-}
+};
 
 export const changeInfo = async (req, res) => {
   try {
@@ -80,6 +79,4 @@ export const changeInfo = async (req, res) => {
   } catch (error) {
     res.status(400).json(error);
   }
-}
-
-
+};
