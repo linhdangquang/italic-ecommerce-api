@@ -1,5 +1,5 @@
 import express from 'express';
-import { signUp, signIn, getAllUsers, changeInfo} from '../controllers/auth.controller.js';
+import { signUp, signIn, getAllUsers, changeInfo } from '../controllers/auth.controller.js';
 import { isAdmin, isAuth, verifyToken } from '../middleware/auth.js';
 const router = express.Router();
 const BASE_URL = '/api/users';
