@@ -7,7 +7,7 @@ export const getAllHeroBanner = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const getOneHeroBanner = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ export const getOneHeroBanner = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const createHeroBanner = async (req, res) => {
   try {
@@ -25,7 +25,7 @@ export const createHeroBanner = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const updateHeroBanner = async (req, res) => {
   try {
@@ -37,7 +37,7 @@ export const updateHeroBanner = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const deleteHeroBanner = async (req, res) => {
   try {
@@ -46,4 +46,4 @@ export const deleteHeroBanner = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};

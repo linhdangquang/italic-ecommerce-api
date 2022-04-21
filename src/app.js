@@ -25,7 +25,7 @@ app.use(AuthRouter);
 app.use(OrderRouter);
 app.use(HeroBannerRouter);
 
-mongoose.connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..' ,  'public' ,  'index.html'));
