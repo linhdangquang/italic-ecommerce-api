@@ -58,10 +58,10 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find({}, '-password',);
     res.json(users);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json(error);
   }
-}
+};
 
 export const changeInfo = async (req, res) => {
   try {
@@ -80,6 +80,6 @@ export const changeInfo = async (req, res) => {
   } catch (error) {
     res.status(400).json(error);
   }
-}
+};
 
 
