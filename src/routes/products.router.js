@@ -9,6 +9,6 @@ router.get(URL, productsController.getProducts);
 router.post(`${URL}/:userId`, verifyToken, isAuth, isAdmin, productsController.postProduct);
 router.get(`${URL}/:productId`, productsController.getProduct);
 router.delete(`${URL}/:userId/:productId`, verifyToken, isAuth, isAdmin, productsController.delProduct);
-router.put(`${URL}/:userId/:productId`, verifyToken, isAuth, isAdmin,  productsController.updateProduct);
+router.put(`${URL}/:userId/:productId`, verifyToken, isAuth, isAdmin, productsController.updateProduct);
 
 export default router;

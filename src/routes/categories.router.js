@@ -9,7 +9,6 @@ Router.get(URL, CategoryController.getCategories);
 Router.post(`${URL}/:userId`, verifyToken, isAuth, isAdmin ,CategoryController.createCategory);
 Router.get(`${URL}/:categoryId`, CategoryController.getCategoryDetail);
 Router.put(`${URL}/:userId/:categoryId`, verifyToken, isAuth, isAdmin, CategoryController.updateCategory);
-Router.delete(`${URL}/:userId/:categoryId`,verifyToken, isAuth, isAdmin,  CategoryController.deleteCategory);
-
+Router.delete(`${URL}/:userId/:categoryId`,verifyToken, isAuth, isAdmin, CategoryController.deleteCategory);
 
 export default Router;

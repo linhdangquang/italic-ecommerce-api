@@ -1,6 +1,7 @@
 import Order from '../models/order.model';
 import User from '../models/user.model';
 import Product from '../models/products.model';
+
 export const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({}, '-password');
@@ -34,7 +35,7 @@ export const getOrderDetails = async (req, res) => {
     const user = await User.findById(userId, '-password');
     const products = await Promise.all(
       order.products.map(async (product) => {
-        const productId = product.productId;
+        const { productId } = product;
         const productItem = await Product.findById(productId);
         return {
           productItem,

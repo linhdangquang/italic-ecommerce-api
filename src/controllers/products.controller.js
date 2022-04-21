@@ -2,14 +2,13 @@ import Product from '../models/products.model';
 import 'regenerator-runtime/runtime';
 
 export const getProducts = (req, res) => {
-  const limit = req.query.limit;
+  const { limit } = req.query;
   const textSearch = req.query.q;
   Product.find({}, (err, products) => {
     if (err) {
       return res.status(400).json(err);
-    } else {
-      res.status(200).json(products);
     }
+      res.status(200).json(products);
   })
     .where('name')
     .regex(new RegExp(textSearch, 'i'))
